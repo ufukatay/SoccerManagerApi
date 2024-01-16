@@ -1,0 +1,13 @@
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\bin\Debug\net8.0\Entitites.deps.json
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\bin\Debug\net8.0\Entitites.dll
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\bin\Debug\net8.0\Entitites.pdb
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.AssemblyInfoInputs.cache
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.AssemblyInfo.cs
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.csproj.CoreCompileInputs.cache
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.dll
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\refint\Entitites.dll
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.pdb
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\ref\Entitites.dll
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\bin\Debug\net8.0\Entitites.runtimeconfig.json
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.genruntimeconfig.cache
