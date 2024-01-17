@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "HDrteWvTOyWJiDBrewQSgdGLEGIgzqesNX0vObuItte/RjAb4d9VI6quboSYjBLh/3fc+joOjbL/Jk55vACNug==",
+  "dgSpecHash": "3KtHPUyCJKzXTBE6V7l1puWvZbY/xS2ziSjEKFYLeTn8vW+hboqY5Tp1UJGKbdDGiyD9nPHL2jPLlGHfyK3kJg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ufuk\\source\\repos\\SoccerManagerApi\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ufuk\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ufuk\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\ufuk\\.nuget\\packages\\bogus\\35.4.0\\bogus.35.4.0.nupkg.sha512",
     "C:\\Users\\ufuk\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ufuk\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.1\\microsoft.aspnetcore.jsonpatch.8.0.1.nupkg.sha512",
     "C:\\Users\\ufuk\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\8.0.1\\microsoft.aspnetcore.mvc.newtonsoftjson.8.0.1.nupkg.sha512",

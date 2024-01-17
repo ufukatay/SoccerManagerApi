@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "hc6hKl/mFYZ67/AwGw41olQCCUcz0/DpUbdfyJ7xBhwwWw+pjGQMeqzRx+RDRX2OciS7djDeCdQk9edLp1Bw2w==",
+  "dgSpecHash": "pFoovGUMHD1+ISxRSeujV0mOOFjukJBIJ/QJyGnN5ehVG/qK9XBmtcYH21wuwhhldeF8l6XL4VS46gTbNeP88A==",
   "success": true,
   "projectFilePath": "C:\\Users\\ufuk\\source\\repos\\SoccerManagerApi\\Business\\Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ufuk\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ufuk\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\ufuk\\.nuget\\packages\\bogus\\35.4.0\\bogus.35.4.0.nupkg.sha512",
     "C:\\Users\\ufuk\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.1\\microsoft.aspnetcore.jsonpatch.8.0.1.nupkg.sha512",
     "C:\\Users\\ufuk\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\8.0.1\\microsoft.aspnetcore.mvc.newtonsoftjson.8.0.1.nupkg.sha512",
     "C:\\Users\\ufuk\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

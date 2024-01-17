@@ -988,6 +988,7 @@
       },
       "Data/1.0.0": {
         "dependencies": {
+          "Bogus": "35.4.0",
           "Entitites": "1.0.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "8.0.1",
           "Microsoft.EntityFrameworkCore": "8.0.1",

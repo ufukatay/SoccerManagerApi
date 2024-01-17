@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Entitites.Dtos.Team;
+using Entitites.Mappers;
 using Entitites.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +21,7 @@ namespace SoccerManagerApi.Controllers
         public async Task<IActionResult> GetAllTeams()
         {
             var teams = await _teamService.GetAllTeams();
+            var teamDtos = teams.Select(t => t.ToTeamDto()).ToList();
             return Ok(teams); //200
         }
         [HttpGet]
@@ -30,14 +33,15 @@ namespace SoccerManagerApi.Controllers
             {
                 return NotFound(); //404
             }
-            return Ok(team);
+            return Ok(team.ToTeamDto());
         }
         [HttpPost]
-        public async Task<IActionResult> CreateNewTeam([FromBody] Team team)
+        public async Task<IActionResult> CreateNewTeam([FromBody] CreateTeamDto team)
         {
-            if (await _teamService.GetTeamById(team.Id) == null)
+            var teamModel = team.ToTeamFromCreateDto();
+            if (await _teamService.GetTeamById(teamModel.Id) == null)
             {
-                return Ok(await _teamService.CreateNewTeam(team));
+                return Ok(await _teamService.CreateNewTeam(teamModel));
             }
             return BadRequest();
         }

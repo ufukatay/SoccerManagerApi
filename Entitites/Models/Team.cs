@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace Entitites.Models
 {
@@ -18,8 +19,13 @@ namespace Entitites.Models
         [Required]
         [StringLength(50)]
         public string teamCountry { get; set; }
-        [NotMapped]
-        public int teamValue => Players.Sum(p => (int)p.marketValue);
+
+        private int _teamValue;
+        public int? teamValue
+        {
+            get { return _teamValue; }
+            set { _teamValue = value ?? 0; }
+        }
         public List<Player> Players { get; set; } = new List<Player>();
     }
 }
