@@ -14,5 +14,6 @@ namespace Data.Abstract
         Task<Player> UpdatePlayerData(int id, Player player);
         Task DeletePlayer(int id);
         Task<Player> TransferListPlayer(int id, Player player);
+        Task<List<Player>> GetTransferList();
     }
 }

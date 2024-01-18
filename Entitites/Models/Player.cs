@@ -32,5 +32,6 @@ namespace Entitites.Models
         [StringLength(50)]
         public string position { get; set; }
         public bool isInTranferList { get; set; } = false;
+        public int askedPrice { get; set; } = 0;
     }
 }

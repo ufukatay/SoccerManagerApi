@@ -20,5 +20,6 @@ namespace Entitites.Dtos.Player
         public double marketValue { get; set; }
         public string position { get; set; }
         public bool isInTranferList { get; set; } = false;
+        public int askedPrice { get; set; } = 0;
     }
 }

@@ -10,6 +10,7 @@ namespace Business.Abstract
     public interface IPlayerService
     {
         Task<List<Player>> GetAllPlayers();
+        Task<List<Player>> GetTransferList();
         Task<Player> GetPlayerById(int id);
         Task<Player> UpdatePlayerData(int id, Player player);
         Task DeletePlayer(int id);

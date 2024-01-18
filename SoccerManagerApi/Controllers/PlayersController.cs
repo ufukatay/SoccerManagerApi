@@ -25,6 +25,16 @@ namespace SoccerManagerApi.Controllers
             var playerDtos = players.Select(p => p.ToPlayerDto()).ToList();
             return Ok(players); //200
         }
+
+        [HttpGet]
+        [Route("transferList")]
+        public async Task<IActionResult> GetTransferList()
+        {
+            var players = await _playerService.GetTransferList();
+            var playerDtos = players.Select(p => p.ToPlayerDto()).ToList();
+            return Ok(players); //200
+        }
+
         [HttpGet]
         [Route("{id}")]
         public async Task<IActionResult> GetPlayerById(int id)

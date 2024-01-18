@@ -37,6 +37,14 @@ namespace Data.Concrete
             return await _context.Players.FindAsync(id);
         }
 
+        public async Task<List<Player>> GetTransferList()
+        {
+            return await _context.Players
+                .Where(p => p.isInTranferList)
+                .ToListAsync();
+        }
+
+
         public async Task<Player?> TransferListPlayer(int id, Player player)
         {
             {
@@ -47,8 +55,8 @@ namespace Data.Concrete
                     return null;
                 }
 
+                existPlayer.askedPrice = player.askedPrice;
                 existPlayer.isInTranferList = player.isInTranferList;
-                existPlayer.marketValue = player.marketValue;
 
                 await _context.SaveChangesAsync();
 

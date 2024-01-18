@@ -9,6 +9,6 @@ namespace Entitites.Dtos.Player
     public class TransferListPlayerDto
     {
         public bool isIntransferList { get; set; } = false;
-        public int marketValue { get; set; }
+        public int askedPrice { get; set; }
     }
 }

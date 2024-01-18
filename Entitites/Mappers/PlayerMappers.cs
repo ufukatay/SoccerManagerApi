@@ -24,6 +24,7 @@ namespace Entitites.Mappers
                 marketValue = player.marketValue,
                 position = player.position,
                 isInTranferList = player.isInTranferList,
+                askedPrice = player.askedPrice,
             };
         }
 
@@ -42,7 +43,7 @@ namespace Entitites.Mappers
             return new Player
             {
                 isInTranferList = player.isIntransferList,
-                marketValue = player.marketValue,
+                askedPrice = player.askedPrice,
             };
         }
     }

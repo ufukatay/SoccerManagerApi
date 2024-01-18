@@ -32,6 +32,11 @@ namespace Business.Concrete
             return _playerRepository.GetPlayerById(id);
         }
 
+        public Task<List<Player>> GetTransferList()
+        {
+            return _playerRepository.GetTransferList();
+        }
+
         public Task<Player> TransferListPlayer(int id, Player player)
         {
             return _playerRepository.TransferListPlayer(id, player);
