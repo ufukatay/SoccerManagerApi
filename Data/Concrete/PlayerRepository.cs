@@ -17,13 +17,6 @@ namespace Data.Concrete
             _context = context;
         }
 
-        public async Task<Player> CreateNewPlayer(Player player)
-        {
-            await _context.Players.AddAsync(player);
-            await _context.SaveChangesAsync();
-            return player;
-        }
-
         public async Task DeletePlayer(int id)
         {
             var deletedPlayer = await GetPlayerById(id);
@@ -44,11 +37,41 @@ namespace Data.Concrete
             return await _context.Players.FindAsync(id);
         }
 
-        public async Task<Player> UpdatePlayer(Player player)
+        public async Task<Player?> TransferListPlayer(int id, Player player)
         {
-            _context.Players.Update(player);
+            {
+                var existPlayer = await _context.Players.FindAsync(id);
+
+                if (existPlayer == null)
+                {
+                    return null;
+                }
+
+                existPlayer.isInTranferList = player.isInTranferList;
+                existPlayer.marketValue = player.marketValue;
+
+                await _context.SaveChangesAsync();
+
+                return existPlayer;
+            }
+        }
+
+        public async Task<Player?> UpdatePlayerData(int id, Player player)
+        {
+            var existPlayer = await _context.Players.FindAsync(id);
+
+            if (existPlayer == null)
+            {
+                return null;
+            }
+
+            existPlayer.firstName = player.firstName;
+            existPlayer.lastName = player.lastName;
+            existPlayer.country = player.country;
+
             await _context.SaveChangesAsync();
-            return player;
+
+            return existPlayer;
         }
     }
 }

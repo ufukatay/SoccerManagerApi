@@ -17,11 +17,6 @@ namespace Business.Concrete
             _playerRepository = playerRepository;
         }
 
-        public Task<Player> CreateNewPlayer(Player player)
-        {
-            return _playerRepository.CreateNewPlayer(player);
-        }
-
         public Task DeletePlayer(int id)
         {
             return _playerRepository.DeletePlayer(id);
@@ -37,9 +32,14 @@ namespace Business.Concrete
             return _playerRepository.GetPlayerById(id);
         }
 
-        public Task<Player> UpdatePlayer(Player player)
+        public Task<Player> TransferListPlayer(int id, Player player)
         {
-            return _playerRepository.UpdatePlayer(player);
+            return _playerRepository.TransferListPlayer(id, player);
+        }
+
+        public Task<Player> UpdatePlayerData(int id, Player player)
+        {
+            return _playerRepository.UpdatePlayerData(id, player);
         }
     }
 }

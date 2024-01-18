@@ -11,6 +11,7 @@ namespace Entitites.Dtos.Team
 {
     public class TeamDto
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string teamName { get; set; }
         public string teamCountry { get; set; }

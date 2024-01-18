@@ -25,7 +25,6 @@ namespace Entitites.Mappers
         {
             return new Team
             {
-                Id = team.Id,
                 teamCountry = team.teamCountry,
                 teamName = team.teamName,
             };

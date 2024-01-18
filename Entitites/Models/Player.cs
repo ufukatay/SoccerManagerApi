@@ -31,5 +31,6 @@ namespace Entitites.Models
         public double marketValue { get; set; }
         [StringLength(50)]
         public string position { get; set; }
+        public bool isInTranferList { get; set; } = false;
     }
 }

@@ -147,3 +147,4 @@ C:\Users\ufuk\source\repos\SoccerManagerApi\SoccerManagerApi\bin\Debug\net8.0\Ne
 C:\Users\ufuk\source\repos\SoccerManagerApi\SoccerManagerApi\bin\Debug\net8.0\Bogus.dll
 C:\Users\ufuk\source\repos\SoccerManagerApi\SoccerManagerApi\bin\Debug\net8.0\Castle.Core.dll
 C:\Users\ufuk\source\repos\SoccerManagerApi\SoccerManagerApi\bin\Debug\net8.0\Moq.dll
+C:\Users\ufuk\source\repos\SoccerManagerApi\SoccerManagerApi\obj\Debug\net8.0\SoccerManagerApi.sourcelink.json

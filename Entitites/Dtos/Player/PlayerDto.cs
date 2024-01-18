@@ -19,5 +19,6 @@ namespace Entitites.Dtos.Player
         public int age { get; set; }
         public double marketValue { get; set; }
         public string position { get; set; }
+        public bool isInTranferList { get; set; } = false;
     }
 }

@@ -1,7 +1,10 @@
 ﻿using Business.Abstract;
+using Entitites.Dtos.Player;
+using Entitites.Mappers;
 using Entitites.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 
 namespace SoccerManagerApi.Controllers
 {
@@ -19,6 +22,7 @@ namespace SoccerManagerApi.Controllers
         public async Task<IActionResult> GetAllPlayers()
         {
             var players = await _playerService.GetAllPlayers();
+            var playerDtos = players.Select(p => p.ToPlayerDto()).ToList();
             return Ok(players); //200
         }
         [HttpGet]
@@ -32,26 +36,41 @@ namespace SoccerManagerApi.Controllers
             }
             return Ok(player);
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateNewPlayer([FromBody] Player player)
-        {
-            if(await _playerService.GetPlayerById(player.Id) == null)
-            {
-                return Ok(await _playerService.CreateNewPlayer(player));
-            }
-            return BadRequest();
-        }
+
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> UpdatePlayer([FromBody] Player player)
+        public async Task<IActionResult> UpdatePlayerData([FromRoute] int id, [FromBody] UpdatePlayerDto updatePlayerDto)
         {
-            if(await _playerService.GetPlayerById(player.Id) != null)
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var player = await _playerService.UpdatePlayerData(id, updatePlayerDto.ToPlayerFromUpdate());
+            if(player == null)
             {
-                await _playerService.UpdatePlayer(player);
-                return Ok();
+                return NotFound("Player not found.");
             }
-            return NotFound();
+            
+            return Ok(player.ToPlayerDto());
         }
+
+
+        [HttpPut]
+        [Route("transferList/{id}")]
+        public async Task<IActionResult> TransferListPlayer([FromRoute] int id, [FromBody] TransferListPlayerDto transferListPlayerDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var player = await _playerService.TransferListPlayer(id, transferListPlayerDto.ToPlayerFromUpdateTransferList());
+            if (player == null)
+            {
+                return NotFound("Player not found.");
+            }
+
+            return Ok(player.ToPlayerDto());
+        }
+
+
         [HttpDelete]
         [Route("{id}")]
         public async Task<IActionResult> DeletePlayerById(int id)
