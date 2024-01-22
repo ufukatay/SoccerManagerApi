@@ -42,8 +42,15 @@ namespace Entitites.Mappers
         {
             return new Player
             {
-                isInTranferList = player.isIntransferList,
                 askedPrice = player.askedPrice,
+            };
+        }
+
+        public static Player ToPlayerFromBuyPlayer (this BuyPlayerDto player)
+        {
+            return new Player
+            {
+                TeamId = player.TeamId,
             };
         }
     }

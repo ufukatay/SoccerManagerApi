@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,9 @@ namespace Data.Concrete
     public class TeamRepository : ITeamRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly Randomizer _randomizer;
         public TeamRepository(ApplicationDbContext context) 
         {
             _context = context;
-            _randomizer = new Randomizer();
         }
         public async Task<List<Team>> GetAllTeams()
         {
@@ -88,7 +87,7 @@ namespace Data.Concrete
                 }
             }
 
-            team.teamValue = team.Players.Sum(player => (int)player.marketValue);
+            team.teamValue = team.Players.Sum(p => (int)p.marketValue);
             team.teamValue += 5000000; 
 
             await _context.Teams.AddAsync(team);
@@ -101,11 +100,22 @@ namespace Data.Concrete
             return await _context.Teams.Include(p => p.Players).FirstOrDefaultAsync(i => i.Id == id); 
         }
 
-        public async Task<Team> UpdateTeam(Team team)
+        public async Task<Team> UpdateTeamData(int id, Team team)
         {
-            _context.Teams.Update(team);
+            var existTeam = await _context.Teams.FindAsync(id);
+
+            if (existTeam == null)
+            {
+                return null;
+            }
+
+            existTeam.teamName = team.teamName;
+            existTeam.teamCountry = team.teamCountry;
+
+
             await _context.SaveChangesAsync();
-            return team;
+
+            return existTeam;
         }
 
         public async Task DeleteTeam(int id)

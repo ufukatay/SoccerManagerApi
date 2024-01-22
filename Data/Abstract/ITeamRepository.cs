@@ -12,7 +12,8 @@ namespace Data.Abstract
         Task<List<Team>> GetAllTeams();
         Task<Team> GetTeamById(int id);
         Task<Team> CreateNewTeam(Team team);
-        Task<Team> UpdateTeam(Team team);
+        Task<Team> UpdateTeamData(int id, Team team);
         Task DeleteTeam(int id);
     }
 }
+

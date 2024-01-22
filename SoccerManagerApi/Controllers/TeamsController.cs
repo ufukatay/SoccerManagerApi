@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Concrete;
+using Entitites.Dtos.Player;
 using Entitites.Dtos.Team;
 using Entitites.Mappers;
 using Entitites.Models;
@@ -18,14 +20,15 @@ namespace SoccerManagerApi.Controllers
         }
 
         [HttpGet]
+        [Route("[action]")]
         public async Task<IActionResult> GetAllTeams()
         {
             var teams = await _teamService.GetAllTeams();
             var teamDtos = teams.Select(t => t.ToTeamDto()).ToList();
-            return Ok(teams); //200
+            return Ok(teamDtos); //200
         }
         [HttpGet]
-        [Route("{id}")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> GetTeamById(int id)
         {
             var team = await _teamService.GetTeamById(id);
@@ -36,6 +39,7 @@ namespace SoccerManagerApi.Controllers
             return Ok(team.ToTeamDto());
         }
         [HttpPost]
+        [Route("[action]")]
         public async Task<IActionResult> CreateNewTeam([FromBody] CreateTeamDto team)
         {
             var teamModel = team.ToTeamFromCreateDto();
@@ -46,26 +50,19 @@ namespace SoccerManagerApi.Controllers
             return BadRequest();
         }
         [HttpPut]
-        [Route("{id}")]
-        public async Task<IActionResult> UpdateTeam([FromBody] Team team)
+        [Route("[action]/{id}")]
+        public async Task<IActionResult> UpdateTeamData([FromRoute] int id, [FromBody] UpdateTeamDto updateTeamDto)
         {
-            if (await _teamService.GetTeamById(team.Id) != null)
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var team = await _teamService.UpdateTeamData(id, updateTeamDto.ToTeamFromUpdate());
+            if (team == null)
             {
-                await _teamService.UpdateTeam(team);
-                return Ok();
+                return NotFound("Team not found.");
             }
-            return NotFound();
-        }
-        [HttpDelete]
-        [Route("{id}")]
-        public async Task<IActionResult> DeleteTeamById(int id)
-        {
-            if (await _teamService.GetTeamById(id) != null)
-            {
-                await _teamService.DeleteTeam(id);
-                return Ok();
-            }
-            return NotFound();
+
+            return Ok(team.ToTeamDto());
         }
     }
 }

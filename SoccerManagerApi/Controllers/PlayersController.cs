@@ -19,6 +19,7 @@ namespace SoccerManagerApi.Controllers
         }
 
         [HttpGet]
+        [Route("[action]")]
         public async Task<IActionResult> GetAllPlayers()
         {
             var players = await _playerService.GetAllPlayers();
@@ -27,7 +28,7 @@ namespace SoccerManagerApi.Controllers
         }
 
         [HttpGet]
-        [Route("transferList")]
+        [Route("[action]")]
         public async Task<IActionResult> GetTransferList()
         {
             var players = await _playerService.GetTransferList();
@@ -36,7 +37,7 @@ namespace SoccerManagerApi.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> GetPlayerById(int id)
         {
             var player = await _playerService.GetPlayerById(id);
@@ -48,7 +49,7 @@ namespace SoccerManagerApi.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> UpdatePlayerData([FromRoute] int id, [FromBody] UpdatePlayerDto updatePlayerDto)
         {
             if (!ModelState.IsValid)
@@ -65,7 +66,7 @@ namespace SoccerManagerApi.Controllers
 
 
         [HttpPut]
-        [Route("transferList/{id}")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> TransferListPlayer([FromRoute] int id, [FromBody] TransferListPlayerDto transferListPlayerDto)
         {
             if (!ModelState.IsValid)
@@ -80,17 +81,20 @@ namespace SoccerManagerApi.Controllers
             return Ok(player.ToPlayerDto());
         }
 
-
-        [HttpDelete]
-        [Route("{id}")]
-        public async Task<IActionResult> DeletePlayerById(int id)
+        [HttpPut]
+        [Route("[action]/{id}")]
+        public async Task<IActionResult> BuyPlayer([FromRoute] int id, [FromBody] BuyPlayerDto buyplayerdto)
         {
-            if(await _playerService.GetPlayerById(id) != null)
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var player = await _playerService.BuyPlayer(id, buyplayerdto.ToPlayerFromBuyPlayer());
+            if (player == null)
             {
-                await _playerService.DeletePlayer(id);
-                return Ok();
+                return NotFound("Player not found.");
             }
-            return NotFound();
+
+            return Ok(player.ToPlayerDto());
         }
     }
 }

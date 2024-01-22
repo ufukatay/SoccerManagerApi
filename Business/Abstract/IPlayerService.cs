@@ -15,6 +15,7 @@ namespace Business.Abstract
         Task<Player> UpdatePlayerData(int id, Player player);
         Task DeletePlayer(int id);
         Task<Player> TransferListPlayer(int id, Player player);
+        Task<Player> BuyPlayer(int id, Player player);
 
     }
 }

@@ -12,7 +12,7 @@ namespace Entitites.Dtos.Player
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int? TeamId { get; set; }
+        public int TeamId { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string country { get; set; }
@@ -20,6 +20,6 @@ namespace Entitites.Dtos.Player
         public double marketValue { get; set; }
         public string position { get; set; }
         public bool isInTranferList { get; set; } = false;
-        public int askedPrice { get; set; } = 0;
+        public double askedPrice { get; set; } = 0;
     }
 }

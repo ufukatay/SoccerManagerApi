@@ -1,4 +1,5 @@
-﻿using Entitites.Dtos.Team;
+﻿using Entitites.Dtos.Player;
+using Entitites.Dtos.Team;
 using Entitites.Models;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,15 @@ namespace Entitites.Mappers
         }
 
         public static Team ToTeamFromCreateDto(this CreateTeamDto team)
+        {
+            return new Team
+            {
+                teamCountry = team.teamCountry,
+                teamName = team.teamName,
+            };
+        }
+
+        public static Team ToTeamFromUpdate(this UpdateTeamDto team)
         {
             return new Team
             {

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entitites.Dtos.Player
 {
-    public class TransferListPlayerDto
+    public class BuyPlayerDto
     {
-        public double askedPrice { get; set; }
+        public int TeamId { get; set; }
     }
 }

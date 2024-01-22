@@ -17,6 +17,11 @@ namespace Business.Concrete
             _playerRepository = playerRepository;
         }
 
+        public Task<Player> BuyPlayer(int id, Player player)
+        {
+            return _playerRepository.BuyPlayer(id, player);
+        }
+
         public Task DeletePlayer(int id)
         {
             return _playerRepository.DeletePlayer(id);

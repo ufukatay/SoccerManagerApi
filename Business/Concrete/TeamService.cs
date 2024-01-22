@@ -37,9 +37,9 @@ namespace Business.Concrete
             return _teamRepository.GetTeamById(id);
         }
 
-        public Task<Team> UpdateTeam(Team team)
+        public Task<Team> UpdateTeamData(int id, Team team)
         {
-            return _teamRepository.UpdateTeam(team);
+            return _teamRepository.UpdateTeamData(id, team);
         }
     }
 }

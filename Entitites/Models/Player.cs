@@ -13,7 +13,7 @@ namespace Entitites.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [ForeignKey("Team")]
-        public int? TeamId { get; set; } //Foreign Key
+        public int TeamId { get; set; } //Foreign Key
         public Team? Team { get; set; } //Navigation Property
 
         [StringLength(50)]
@@ -22,7 +22,7 @@ namespace Entitites.Models
         [StringLength(50)]
         public string lastName { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string country { get; set; }
 
         public int age { get; set; }
@@ -32,6 +32,7 @@ namespace Entitites.Models
         [StringLength(50)]
         public string position { get; set; }
         public bool isInTranferList { get; set; } = false;
-        public int askedPrice { get; set; } = 0;
+        public double askedPrice { get; set; }
+
     }
 }

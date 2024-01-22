@@ -1,9 +1,11 @@
-﻿using Data.Abstract;
+﻿using Bogus;
+using Data.Abstract;
 using Entitites.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +17,36 @@ namespace Data.Concrete
         public PlayerRepository(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public async Task<Player> BuyPlayer(int id, Player player)
+        {
+            var existPlayer = await _context.Players.FindAsync(id);
+
+            int formerTeamId = existPlayer.TeamId;
+            int newTeamId = player.TeamId;
+
+            if (existPlayer == null || existPlayer.isInTranferList == false || formerTeamId == newTeamId)
+            {
+                return null;
+            }
+
+            
+
+            double val = existPlayer.askedPrice;
+
+            var playerFaker = new Faker<Player>()
+                .RuleFor(p => p.marketValue, f => f.Random.Double(val * 1.1, val * 2));
+
+
+            existPlayer.askedPrice = 0;
+            existPlayer.isInTranferList = false;
+            existPlayer.TeamId = player.TeamId;
+            existPlayer.marketValue = playerFaker.Generate().marketValue;
+
+            await _context.SaveChangesAsync();
+
+            return existPlayer;
         }
 
         public async Task DeletePlayer(int id)
@@ -47,21 +79,19 @@ namespace Data.Concrete
 
         public async Task<Player?> TransferListPlayer(int id, Player player)
         {
+            var existPlayer = await _context.Players.FindAsync(id);
+
+            if (existPlayer == null)
             {
-                var existPlayer = await _context.Players.FindAsync(id);
-
-                if (existPlayer == null)
-                {
-                    return null;
-                }
-
-                existPlayer.askedPrice = player.askedPrice;
-                existPlayer.isInTranferList = player.isInTranferList;
-
-                await _context.SaveChangesAsync();
-
-                return existPlayer;
+                return null;
             }
+
+            existPlayer.askedPrice = player.askedPrice;
+            existPlayer.isInTranferList = true;
+
+            await _context.SaveChangesAsync();
+
+            return existPlayer;
         }
 
         public async Task<Player?> UpdatePlayerData(int id, Player player)
