@@ -12,3 +12,4 @@ C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\ref\Entit
 C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\bin\Debug\net8.0\Entitites.runtimeconfig.json
 C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.genruntimeconfig.cache
 C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.sourcelink.json
+C:\Users\ufuk\source\repos\SoccerManagerApi\Entitites\obj\Debug\net8.0\Entitites.csproj.AssemblyReference.cache
