@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Entitites.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entitites.Models
+namespace Data.Abstract
 {
-    public class AppUser : IdentityUser
+    public interface ITokenService
     {
+        string CreateToken(AppUser user);
     }
 }

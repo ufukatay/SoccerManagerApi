@@ -4,6 +4,7 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240123105512_SeedRole")]
+    partial class SeedRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,15 +195,15 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5c318302-4515-47ac-992f-769a2dfce0cc",
+                            Id = "8a1adb67-97a8-4587-bdcc-af3a1920467c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c4f30045-2bff-48a8-8c00-45c5635dd574",
+                            Id = "478f89a4-1580-49ca-8223-ab35e610f92e",
                             Name = "User",
-                            NormalizedName = "USER"
+                            NormalizedName = "User"
                         });
                 });
 
