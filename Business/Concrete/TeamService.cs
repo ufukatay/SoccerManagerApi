@@ -17,6 +17,10 @@ namespace Business.Concrete
             _teamRepository = teamRepository;
         }
 
+        public Task UpdateTeamValue(int id) 
+        {
+            return _teamRepository.UpdateTeamValue(id);
+        }
         public Task<Team> CreateNewTeam(Team team)
         {
             return _teamRepository.CreateNewTeam(team);

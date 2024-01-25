@@ -127,5 +127,15 @@ namespace Data.Concrete
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task UpdateTeamValue(int id)
+        {
+            var team = await GetTeamById(id);
+            if (team != null)
+            {
+                team.teamValue = team.Players.Sum(p => (int)p.marketValue);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

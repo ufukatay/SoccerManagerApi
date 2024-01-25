@@ -2,6 +2,7 @@
 using Entitites.Dtos.Player;
 using Entitites.Mappers;
 using Entitites.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
@@ -10,12 +11,15 @@ namespace SoccerManagerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PlayersController : ControllerBase
     {
         private readonly IPlayerService _playerService;
-        public PlayersController(IPlayerService playerService)
+        private readonly ITeamService _teamService;
+        public PlayersController(IPlayerService playerService, ITeamService teamService)
         {
             _playerService = playerService;
+            _teamService = teamService;
         }
 
         [HttpGet]
@@ -88,13 +92,18 @@ namespace SoccerManagerApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var player = await _playerService.BuyPlayer(id, buyplayerdto.ToPlayerFromBuyPlayer());
+            var player = await _playerService.GetPlayerById(id);
             if (player == null)
             {
                 return NotFound("Player not found.");
             }
+            var formerTeamId = player.TeamId;
+            var newPlayer = await _playerService.BuyPlayer(id, buyplayerdto.ToPlayerFromBuyPlayer());
 
-            return Ok(player.ToPlayerDto());
+            await _teamService.UpdateTeamValue(buyplayerdto.TeamId);
+            await _teamService.UpdateTeamValue(formerTeamId);
+
+            return Ok(newPlayer.ToPlayerDto());
         }
     }
 }

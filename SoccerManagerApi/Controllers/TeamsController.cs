@@ -4,6 +4,7 @@ using Entitites.Dtos.Player;
 using Entitites.Dtos.Team;
 using Entitites.Mappers;
 using Entitites.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace SoccerManagerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TeamsController : ControllerBase
     {
         private readonly ITeamService _teamService;
@@ -36,7 +38,7 @@ namespace SoccerManagerApi.Controllers
             {
                 return NotFound(); //404
             }
-            return Ok(team.ToTeamDto());
+            return Ok(team);
         }
         [HttpPost]
         [Route("[action]")]

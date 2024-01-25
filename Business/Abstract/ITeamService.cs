@@ -10,6 +10,7 @@ namespace Business.Abstract
     public interface ITeamService
     {
         Task<List<Team>> GetAllTeams();
+        Task UpdateTeamValue(int id);
         Task<Team> GetTeamById(int id);
         Task<Team> CreateNewTeam(Team team);
         Task<Team> UpdateTeamData(int id, Team team);
